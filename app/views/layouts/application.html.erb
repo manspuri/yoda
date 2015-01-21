@@ -12,6 +12,9 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <!-- the debug(params) will only show in the development environment and not production environments which have been deployed and which are visible to the application's users -->
