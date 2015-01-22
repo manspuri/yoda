@@ -1,3 +1,4 @@
+
 class User < ActiveRecord::Base
 	before_save {self.email = self.email.downcase}
 	validates :name,  presence: true, length: { maximum: 50 } 
@@ -19,4 +20,14 @@ class User < ActiveRecord::Base
 	# match. 
 
 	# 3. An 'authenticate' method which returns the user if the password is correct.
+
+	# this method allows us to create a hashed password_digest for our user fixture (test)
+	# 'string' is the string to be hashed and 'cost' represents the computational cost to 
+	# calculate the hashed password_digest. The cost can be MIN_COST because we are in a test
+	# environment rather than production environment which requires an intractable password_hash
+	def User.digest(string)
+		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+																									BCrypt::Engine.cost
+		BCrypt::Password.create(string, cost: cost)
+	end
 end
