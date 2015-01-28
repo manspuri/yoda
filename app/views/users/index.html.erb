@@ -1,0 +1,11 @@
+<% provide(:title, "All Users") %>
+<h1>All Users</h1>
+
+<%= will_paginate %>
+<!-- Rails infers that @users is a list of User objects, it automatically iterates through them and renders each with the
+_user.html.erb partial -->
+<ul class="users">
+	<%= render @users %>
+</ul>
+
+<%= will_paginate %>

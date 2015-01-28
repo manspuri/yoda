@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 										# not case-sensitive using the statement below
 										uniqueness: { case_sensitive: false }
 	has_secure_password
-	validates :password, length: { minimum: 6 }
+	validates :password, length: { minimum: 6 }, allow_blank: true
 	# has_secure_password adds the following functionality: 
 
 	# 1. Ability to save a securely hashed password_digest attribute to the database

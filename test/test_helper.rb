@@ -22,7 +22,7 @@ class ActiveSupport::TestCase
   																remember_me: remember_me
   		}
   	else
-  		sessioin[:user_id] = user.id 
+  		session[:user_id] = user.id 
   	end
   end 
 
